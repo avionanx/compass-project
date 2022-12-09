@@ -15,13 +15,22 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\compass-project.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Text Include="input\mytest.txt" />
+    <Text Include="input\mytrain.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="input\sample_submission.csv" />
+    <None Include="input\test.csv" />
+    <None Include="input\train.csv" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\app.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\compass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\compass-project.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\data.cpp">
@@ -29,10 +38,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\compass.h">
+    <ClInclude Include="src\app.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\app.h">
+    <ClInclude Include="src\compass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\data.h">

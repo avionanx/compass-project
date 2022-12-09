@@ -1,0 +1,55 @@
+uselessline
+0,1,12
+1,1,4
+
+Code	Column	File	Line
+25035,84,2.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	848016
+25035,900,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	2210
+25035,259,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	7480
+25035,135,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	43721
+25035,263,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	95494
+25035,298,2.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	263179
+25035,1647,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	334412
+25035,47,2.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	372781
+25035,1146,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	463795
+25035,563,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	490538
+
+Code	Column	File	Line
+15,811,2.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	63482
+15,67,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	63748
+15,262,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	82759
+15,658,3.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	100441
+15,182,4.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	113491
+15,147,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	122659
+15,135,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	163808
+15,146,3.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	234295
+15,169,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	234521
+15,75,2.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	310444
+15,31,3.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	331758
+15,1307,1.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	350779
+15,61,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	363419
+15,198,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	394894
+15,413,1.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	560688
+15,3,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	583379
+15,32,4.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	590724
+15,11,5.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	596475
+15,184,2.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	626776
+15,58,4.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	700447
+15,125,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	751328
+15,233,3.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	758412
+15,121,2.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	789517
+15,336,2.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	791869
+15,114,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	806883
+15,504,4.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	810328
+15,30,4.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	837935
+15,18,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	858895
+15,406,4.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	885813
+15,1113,2.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	893584
+15,284,4.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	922063
+15,15,2.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	963059
+15,118,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	977846
+15,194,3.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	979484
+15,1200,3.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	985871
+15,1025,1.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	1068763
+15,306,3.0	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	1080959
+15,837,4.5	1	C:\Users\lenovo\source\repos\compass-project\compass-project\input\train.csv	1099232

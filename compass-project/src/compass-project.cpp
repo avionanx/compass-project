@@ -10,7 +10,8 @@ template <
 auto since(std::chrono::time_point<clock_t, duration_t> const& start)
 {
     return std::chrono::duration_cast<result_t>(clock_t::now() - start);
-} //return time
+}
+//return time
 int main()
 {
     auto start = std::chrono::steady_clock::now(); 
