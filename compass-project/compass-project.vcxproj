@@ -147,6 +147,7 @@
     <Text Include="input\mytrain.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="input\sample_submission (1).csv" />
     <None Include="input\sample_submission.csv" />
     <None Include="input\test.csv" />
     <None Include="input\train.csv" />

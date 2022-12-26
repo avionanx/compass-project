@@ -9,7 +9,8 @@
 #include <map>
 #include <vector>
 #include <cmath>
-
+#include "data.h"
+#include <tuple>
 typedef std::map<int, std::vector<float>>& compassData;
 namespace compass {
 
@@ -22,10 +23,10 @@ namespace compass {
 
 	void readTestFile(std::string path, std::map<int, std::vector<float>>& testList);
 
-	float calculateCosineSimilarity(std::vector<float>& A, std::vector<float>& B);
+	std::pair<float,int> calculateCosineSimilarity(std::vector<float>& A, std::vector<float>& B);
 	float cosineFormula(const std::vector<float>& A, const std::vector<float>& B);
 
 	void printGuess(std::map<int, std::vector<float>>& dataList);
-
+	void guessRating(std::map<int, std::vector<float>>& userList, std::map<int, std::vector<float>>& testList);
 	bool hasWatchedMovie(std::vector<float >& dataList, float movieID);
 }

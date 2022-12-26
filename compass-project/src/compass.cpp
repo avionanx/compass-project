@@ -127,23 +127,21 @@ namespace compass {
 				}
 			}
 		}
-		std::cout << "Number of numbers: " << i << std::endl;
 		file.close();
 	}
 
-	float calculateCosineSimilarity(std::vector<float>& A, std::vector<float>& B) {
+	std::pair<float,int> calculateCosineSimilarity(std::vector<float>& A, std::vector<float>& B) {
 		int sameMoviesFound = 0;
 		std::vector<float> movieRatingA;
 		std::vector<float> movieRatingB;
+
 		if (A.size() < B.size()) {
 			for (int x = 0; x < A.size(); x += 2) {
-				for (int y = x; y < B.size(); y += 2) {
+				for (int y = 0; y < B.size(); y += 2) {
 					if (A[x] == B[y]) {
 						sameMoviesFound++;
 						movieRatingA.push_back(A[x + 1]);
 						movieRatingB.push_back(B[y + 1]);
-
-						//std::cout << A[x] << " " << A[x + 1] << " " << B[y + 1] << std::endl;
 					}
 
 				}
@@ -151,7 +149,7 @@ namespace compass {
 		}
 		else {
 			for (int x = 0; x < B.size(); x += 2) {
-				for (int y = x; y < A.size(); y += 2) {
+				for (int y = 0; y < A.size(); y += 2) {
 					if (A[y] == B[x]) {
 						sameMoviesFound++;
 						movieRatingA.push_back(A[y + 1]);
@@ -162,38 +160,42 @@ namespace compass {
 				}
 			}
 		}
-
 		if (movieRatingA.empty() || movieRatingA.size() < 1) {
-			return -1;
+			return std::make_pair(0, 0);
 		}
-		return cosineFormula(movieRatingA, movieRatingB);
+		
+		return std::make_pair(cosineFormula(movieRatingA, movieRatingB),sameMoviesFound);
 	}
 
 	float cosineFormula(const std::vector<float>& A, const std::vector<float>& B) {
 		float numerator = 0.0f;
-		float denominator = 1.0f; //dont want 0.0/0.0 really
+		float denominator = 0.0f; //dont want 0.0/0.0 really
 		for (int i = 0; i < A.size(); i++) {
 			numerator += (double)A[i] * B[i];
 		}
-		//std::cout << "numumerator is" << numerator << std::endl;
 		float l = 0.0f;
 		float r = 0.0f;
 		for (const auto& n : A) {
-			l += pow(n, 2);
+			l += std::pow(n, 2);
 		}
-		l = sqrt(l);
-		for (const auto& n : A) {
-			r += pow(n, 2);
+		l = std::sqrt(l);
+		for (const auto& n : B) {
+			r += std::pow(n, 2);
 		}
-		r = sqrt(r);
+		r = std::sqrt(r);
+		
 		denominator = l * r;
+		if (denominator == 0) {
+			return 0;
+		}
 		return numerator / denominator;
 	}
 
 	void printGuess(std::map<int, std::vector<float>>& dataList) {
 		int index = 0;
 		for (const auto& c : dataList) {
-			std::cout << c.first << " " << c.second[0] << " " << c.second[1] << " " << c.second[2] << std::endl;
+			//std::cout << c.first << " " << c.second[0] << " " << c.second[1] << " " << c.second[2] << std::endl;
+			std::cout << c.first << " " << c.second[2] << std::endl;
 		}
 	}
 
@@ -204,5 +206,55 @@ namespace compass {
 				hasWatchedMovie = true;
 		}
 		return hasWatchedMovie;
+	}
+
+	void guessRating(std::map<int, std::vector<float>>& userList, std::map<int, std::vector<float>>& testList) {
+		for (const auto& q : testList) {
+
+			std::vector <float> numerator;
+			std::vector <float> denominator;
+			int i = q.first;
+			float missingMovieID = q.second[1];
+			float userIDA = q.second[0];
+
+			double bestSimilarity = 0.0f;
+			int bestMatch = 0;
+
+			for (const auto& p : userList) {
+				auto b = p.first;
+				if (!compass::hasWatchedMovie(userList.at(b), missingMovieID)) {
+					continue; //skip if chosen user has not watched the missing movie
+				}
+				else if (userIDA == b) {
+					continue; //skip if chosen user is same as test user
+				}
+				else if (userList.find(b) == userList.end() || userList.find(userIDA) == userList.end()) {
+					continue; //i forgot what even was this for
+				}
+				else if (std::find(userList.at(b).begin(), userList.at(b).end(), missingMovieID) == userList.at(b).end()) {
+					continue; //what happened here
+				}
+				std::pair<float,int> resultPair = compass::calculateCosineSimilarity(userList.at(userIDA), userList.at(b));
+				//std::cout << "UserID A:" << userIDA << " B: " << b << std::endl;
+				int IndexOfMovieAtB = 0;
+				IndexOfMovieAtB = std::find(userList.at(b).begin(), userList.at(b).end(), missingMovieID) - userList.at(b).begin();
+				while (IndexOfMovieAtB % 2 != 0 && userList.at(b)[IndexOfMovieAtB] <= 5) {
+					//start at next step instead of index begin
+					IndexOfMovieAtB = std::find(userList.at(b).begin() + IndexOfMovieAtB + 1, userList.at(b).end(), missingMovieID) - userList.at(b).begin();
+				}
+				numerator.push_back(userList.at(b)[IndexOfMovieAtB + 1] * resultPair.first* resultPair.second);
+				denominator.push_back(resultPair.first * resultPair.second);
+			}
+			float n_sum = 0;
+			float d_sum = 0;
+			for (float i : numerator) {
+				n_sum += i;
+			}
+			for (float i : denominator) {
+				d_sum += i;
+			}
+			float ratingGuess = n_sum / d_sum;
+			testList.at(i)[2] = ratingGuess;
+		}
 	}
 }

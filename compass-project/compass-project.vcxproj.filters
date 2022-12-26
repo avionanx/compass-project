@@ -22,6 +22,7 @@
     <None Include="input\sample_submission.csv" />
     <None Include="input\test.csv" />
     <None Include="input\train.csv" />
+    <None Include="input\sample_submission (1).csv" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app.cpp">
