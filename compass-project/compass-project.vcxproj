@@ -156,7 +156,6 @@
     <ClCompile Include="src\app.cpp" />
     <ClCompile Include="src\compass-project.cpp" />
     <ClCompile Include="src\compass.cpp" />
-    <ClCompile Include="src\data.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\app.h" />
