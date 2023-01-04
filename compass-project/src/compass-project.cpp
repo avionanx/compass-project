@@ -1,7 +1,7 @@
 #include <iostream>
 #include "app.h"
 #include <chrono> //time library to calculate runtime
-
+//templates for chrono classes
 template <
     class result_t = std::chrono::milliseconds,
     class clock_t = std::chrono::steady_clock,
@@ -14,6 +14,7 @@ auto since(std::chrono::time_point<clock_t, duration_t> const& start)
 //return time
 int main()
 {
+    //begin
     auto start = std::chrono::steady_clock::now(); 
     
 

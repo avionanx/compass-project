@@ -1,19 +1,25 @@
 #include "app.h"
 void App() {
-	Data data; //the amazing data class
-	//std::cout << data.testList.at(1).size();
-
-	compass::readFile("input/mytrain.txt", data.userList, data.filmList); //reads input file and writes to userList of users
-	compass::readTestFile("input/mytest.txt", data.testList);
-
-	compass::guessRating(data.userList,data.testList);
-
-
+	Data data; //initialize data containers
+	//read datas
+	compass::readFile("input/train.csv", data.userList, data.filmList); //reads input file and writes to userList of users
+	compass::readTestFile("input/test.csv", data.testList); //reads test file and prepares empty datas
 	
+	//find users that rated most movies and movies that have most ratings
+	std::vector<int> userTopRatings = compass::getTopTenData(data.userList);
+	for (int i = 0; i < userTopRatings.size(); i += 2) {
+		std::cout << userTopRatings[i] << " " << userTopRatings[i + 1] << std::endl;
+	}
+	std::cout << "\n\n";
+	std::vector<int> filmTopRatings = compass::getTopTenData(data.filmList);
+	for (int i = 0; i < filmTopRatings.size(); i += 2) {
+		std::cout << filmTopRatings[i] << " " << filmTopRatings[i + 1] << std::endl;
+	}
+	//
+	std::cout << "\n\n";
+	//guess ratings
+	compass::guessRating(data.userList,data.testList);
 	compass::printGuess(data.testList);
-	//std::vector<int> userTopRatings = compass::getTopTenData(data.userList);
-	//std::vector<int> filmTopRatings = compass::getTopTenData(data.filmList);
 
-	//std::cout<< "cosine thing is: " << compass::calculateCosineSimilarity(data.userList.at(2199), data.userList.at(22178)) << std::endl;
 
 }

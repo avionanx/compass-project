@@ -49,7 +49,6 @@ namespace compass {
 				}
 			}
 		}
-		std::cout << "Reading training file is completed \n";
 		file.close();
 	}
 
@@ -58,10 +57,10 @@ namespace compass {
 	}
 
 	std::vector<int> getTopTenData(std::map<int, std::vector<float>>& dataList) {
-		std::vector<int> dataAndRatings(20);
+		std::vector<int> dataAndRatings;//init
 
 
-		std::vector<int> skipList(10);
+		std::vector<int> skipList(10);//skips if its already in data list
 		for (int x = 0; x < 10; x++) {
 			int highestRatingID = 0;
 			int highestDataID = 0;
@@ -75,13 +74,14 @@ namespace compass {
 				}
 			}
 			//std::cout << highestDataID << " " << highestRatingID << std::endl;
+			//std::cout << highestDataID << " " << highestRatingID << std::endl;
 			skipList.push_back(highestDataID);
 			dataAndRatings.push_back(highestDataID);
 			dataAndRatings.push_back(highestRatingID);
 		}
 		return dataAndRatings;
 	}
-
+	
 	void readTestFile(std::string path, std::map<int, std::vector<float>>& testList) {
 		//io stuff
 		std::ifstream file;
@@ -160,7 +160,7 @@ namespace compass {
 				}
 			}
 		}
-		if (movieRatingA.empty() || movieRatingA.size() < 1) {
+		if (movieRatingA.empty() || movieRatingA.size() <= 1) {
 			return std::make_pair(0, 0);
 		}
 		
@@ -228,14 +228,11 @@ namespace compass {
 				else if (userIDA == b) {
 					continue; //skip if chosen user is same as test user
 				}
-				else if (userList.find(b) == userList.end() || userList.find(userIDA) == userList.end()) {
-					continue; //i forgot what even was this for
-				}
 				else if (std::find(userList.at(b).begin(), userList.at(b).end(), missingMovieID) == userList.at(b).end()) {
-					continue; //what happened here
+					continue; //skip if its at end
 				}
+				//return pair since I need to return 2 values
 				std::pair<float,int> resultPair = compass::calculateCosineSimilarity(userList.at(userIDA), userList.at(b));
-				//std::cout << "UserID A:" << userIDA << " B: " << b << std::endl;
 				int IndexOfMovieAtB = 0;
 				IndexOfMovieAtB = std::find(userList.at(b).begin(), userList.at(b).end(), missingMovieID) - userList.at(b).begin();
 				while (IndexOfMovieAtB % 2 != 0 && userList.at(b)[IndexOfMovieAtB] <= 5) {
@@ -243,7 +240,7 @@ namespace compass {
 					IndexOfMovieAtB = std::find(userList.at(b).begin() + IndexOfMovieAtB + 1, userList.at(b).end(), missingMovieID) - userList.at(b).begin();
 				}
 				numerator.push_back(userList.at(b)[IndexOfMovieAtB + 1] * resultPair.first* resultPair.second);
-				denominator.push_back(resultPair.first * resultPair.second);
+				denominator.push_back(resultPair.first* resultPair.second);
 			}
 			float n_sum = 0;
 			float d_sum = 0;
@@ -255,6 +252,11 @@ namespace compass {
 			}
 			float ratingGuess = n_sum / d_sum;
 			testList.at(i)[2] = ratingGuess;
+			
 		}
+	}
+	//round to half since ratings like 3.8 cannot exist, didnt help with RMSE though.
+	float roundToHalf(float i) {
+		return(floor((i * 2) + 0.5) / 2);
 	}
 }
